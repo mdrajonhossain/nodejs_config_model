@@ -16,5 +16,5 @@ Person.syncDB(function(err, result) {
     if (err) throw err;    
 });
 
-module.exports = Person;
+module.exports = {Person,ExpressCassandra,models};
 
