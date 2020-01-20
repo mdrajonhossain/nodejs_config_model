@@ -20,8 +20,20 @@ router.get('/', function(req, res, next) {
 });
 
 
+
+router.post('/senddata', function(req, res) {	 
+		var name = req.body.name;
+		var age = parseInt(req.body.age);		 
+		var surname = req.body.surname;
+
+		var data = new models.instance.Person({name:name, age:age, surname:surname});		 
+		data.save();
+	res.redirect('/view');	
+});
+
+
 router.get("/view", (req, res) => controller.liste(req, res));
-router.get("/send", (req, res) => controller.liste(req, res));
+ 
 
 
 

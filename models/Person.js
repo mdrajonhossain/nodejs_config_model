@@ -6,10 +6,11 @@ var Person = models.loadSchema('Person', {
         name    : "text",
         surname : "text",
         age     : "int",
-        created : "timestamp"
+        created : { type:"timestamp", default: {"$db_function": "toTimestamp(now())"}}
     },
     key:["name"]
 });
+
 
 
 Person.syncDB(function(err, result) {
