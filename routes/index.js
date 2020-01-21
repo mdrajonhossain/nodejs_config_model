@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const toUUID = require('to-uuid').toUUID;
 var Person = require('../models/Person'); 
 
 var {Person,ExpressCassandra,models} = require('../models/Person'); 
@@ -30,6 +31,23 @@ router.post('/senddata', function(req, res) {
 		data.save();
 	res.redirect('/view');	
 });
+ 
+
+
+router.get('/delete/:col_id', function(req, res) {	 
+	
+	var col = models.uuidFromString(req.params.col_id);
+
+	var query_object = {col_id:col};
+
+	models.instance.Person.delete(query_object);
+
+	res.redirect('/'); 	    
+	 
+});
+
+
+
 
 
 router.get("/view", (req, res) => controller.liste(req, res));
