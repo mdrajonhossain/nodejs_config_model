@@ -49,8 +49,7 @@ router.get('/edit/:col_id', function(req, res) {
 
 
 
-router.post('/updating/:col_id', function(req, res) {
-	// console.log(req.body);
+router.post('/updating/:col_id', function(req, res) {	 
 	var name = req.body.name;
 	var age = parseInt(req.body.age);
 	var surname = req.body.surname;
@@ -58,16 +57,13 @@ router.post('/updating/:col_id', function(req, res) {
  
 	var id = {col_id: col};
 	 
-	models.instance.Person.update(id,{name,age,surname}, function(err){
-	    if(err) console.log(err);
-	    else console.log('Updated Suc!');
-	});
+	models.instance.Person.update(id,{name,age,surname}) 	     
 	res.redirect('/');
 });
 
 
+
+
 router.get("/view", (req, res) => controller.liste(req, res));
-
-
 
 module.exports = router;
