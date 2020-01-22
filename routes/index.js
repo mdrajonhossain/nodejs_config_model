@@ -4,6 +4,7 @@ const toUUID = require('to-uuid').toUUID;
 var Person = require('../models/Person'); 
 
 var {Person,ExpressCassandra,models} = require('../models/Person'); 
+var {Person,ExpressCassandra,models} = require('../models/Informdata'); 
 
 
 const ArticlesController = require("../controllers/AuthController");
@@ -23,17 +24,23 @@ router.post('/senddata', function(req, res) {
 		var surname = req.body.surname;
 		var data = new models.instance.Person({name:name, age:age, surname:surname});		 
 		data.save();
-	res.redirect('/view');	
+	res.redirect('/');
 });
  
-
+router.post('/ajax', function(req, res) {	
+	var name = req.body.name;	 
+	var age = parseInt(req.body.age);	 
+	var surname = req.body.surname;
+	var daata = new models.instance.Person({name:name, age:age, surname:surname});		 
+	daata.save(); 	 
+	// res.send(x);
+});
 
 router.get('/delete/:col_id', function(req, res) {	 	
 	var col = models.uuidFromString(req.params.col_id);
 	var query_object = {col_id:col};
 	models.instance.Person.delete(query_object);
-	res.redirect('/');	    
-	 
+	res.redirect('/');	    	 
 });
  
 
@@ -63,30 +70,24 @@ router.post('/updating/:col_id', function(req, res) {
 
 
 
+// models.instance.Person.find({col_id: models.uuidFromString('853d45b') }, { select: ['age'] }, function(err, people){
+//     console.log(people)
+// });
 
+
+// models.instance.Person.find({}, { select: ['age'] }, function(err, people){
+//     console.log(people)
+// });
 
 
 // models.instance.Person.find({},{ select: ['age']}, function(err, rr){
 // 	console.log(rr)
 // }); 
-// var data = new models.instance.Person({name:"sumon", age:10, surname:"rasss"})
+
+
+// var data = new models.instance.Informdata({name:"sumon", age:10, surname:"rasss"})
 // data.save()
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
