@@ -1,5 +1,7 @@
 
 var ExpressCassandra = require('express-cassandra');
+
+
 var models = ExpressCassandra.createClient({
     clientOptions: {
         contactPoints: ['172.16.3.43'],
@@ -15,5 +17,6 @@ var models = ExpressCassandra.createClient({
         migration: 'safe',
     }
 });
+
 
 module.exports = {ExpressCassandra,models};

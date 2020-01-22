@@ -6,7 +6,6 @@ var Person = require('../models/Person');
 var {Person,ExpressCassandra,models} = require('../models/Person'); 
 
 
-
 const ArticlesController = require("../controllers/AuthController");
 const controller = new ArticlesController();
 
@@ -38,7 +37,6 @@ router.get('/delete/:col_id', function(req, res) {
 });
  
 
-
 router.get('/edit/:col_id', function(req, res) {	 	
 	var col = models.uuidFromString(req.params.col_id);
 	var query_object = {col_id:col};	 
@@ -62,7 +60,35 @@ router.post('/updating/:col_id', function(req, res) {
 });
 
 
-// rajon
+
+
+
+
+
+
+// models.instance.Person.find({},{ select: ['age']}, function(err, rr){
+// 	console.log(rr)
+// }); 
+// var data = new models.instance.Person({name:"sumon", age:10, surname:"rasss"})
+// data.save()
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.get("/view", (req, res) => controller.liste(req, res));
 

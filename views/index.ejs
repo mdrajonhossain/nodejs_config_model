@@ -21,6 +21,7 @@
   <% people.forEach(function(people){ %>        
             <td><%= people.name %></td>
             <td><%= people.age %></td>
+            <td><%= people.surname %></td>
             <td><a class="btn btn-danger" href="/delete/<%= people.col_id %>" role="button">Delete</a>
             <a class="btn btn-warning" href="/edit/<%= people.col_id %>" role="button">Edit</a></td>
   </tr>    

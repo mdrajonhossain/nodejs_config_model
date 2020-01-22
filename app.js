@@ -14,6 +14,7 @@ var usersRouter = require('./routes/users');
 
 var {ExpressCassandra,models} = require('./dbconnect');
 var Person = require('./models/Person');
+var Informdata = require('./models/Informdata');
 
 var app = express();
 
